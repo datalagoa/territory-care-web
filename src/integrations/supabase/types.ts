@@ -14,16 +14,372 @@ export type Database = {
   }
   public: {
     Tables: {
-      [_ in never]: never
+      areas_territoriais: {
+        Row: {
+          codigo: string | null
+          cor: string
+          created_at: string
+          deleted_at: string | null
+          distrito_id: string
+          equipe_id: string | null
+          geojson: Json | null
+          id: string
+          nome: string
+          observacoes: string | null
+          populacao_estimada: number
+          qtd_familias: number
+          status: Database["public"]["Enums"]["entity_status"]
+          unidade_id: string | null
+          updated_at: string
+        }
+        Insert: {
+          codigo?: string | null
+          cor?: string
+          created_at?: string
+          deleted_at?: string | null
+          distrito_id: string
+          equipe_id?: string | null
+          geojson?: Json | null
+          id?: string
+          nome: string
+          observacoes?: string | null
+          populacao_estimada?: number
+          qtd_familias?: number
+          status?: Database["public"]["Enums"]["entity_status"]
+          unidade_id?: string | null
+          updated_at?: string
+        }
+        Update: {
+          codigo?: string | null
+          cor?: string
+          created_at?: string
+          deleted_at?: string | null
+          distrito_id?: string
+          equipe_id?: string | null
+          geojson?: Json | null
+          id?: string
+          nome?: string
+          observacoes?: string | null
+          populacao_estimada?: number
+          qtd_familias?: number
+          status?: Database["public"]["Enums"]["entity_status"]
+          unidade_id?: string | null
+          updated_at?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "areas_territoriais_distrito_id_fkey"
+            columns: ["distrito_id"]
+            isOneToOne: false
+            referencedRelation: "distritos"
+            referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "areas_territoriais_equipe_id_fkey"
+            columns: ["equipe_id"]
+            isOneToOne: false
+            referencedRelation: "equipes"
+            referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "areas_territoriais_unidade_id_fkey"
+            columns: ["unidade_id"]
+            isOneToOne: false
+            referencedRelation: "unidades"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      distritos: {
+        Row: {
+          cor: string
+          created_at: string
+          deleted_at: string | null
+          descricao: string | null
+          email: string | null
+          id: string
+          nome: string
+          responsavel: string | null
+          sigla: string
+          status: Database["public"]["Enums"]["entity_status"]
+          telefone: string | null
+          updated_at: string
+        }
+        Insert: {
+          cor?: string
+          created_at?: string
+          deleted_at?: string | null
+          descricao?: string | null
+          email?: string | null
+          id?: string
+          nome: string
+          responsavel?: string | null
+          sigla: string
+          status?: Database["public"]["Enums"]["entity_status"]
+          telefone?: string | null
+          updated_at?: string
+        }
+        Update: {
+          cor?: string
+          created_at?: string
+          deleted_at?: string | null
+          descricao?: string | null
+          email?: string | null
+          id?: string
+          nome?: string
+          responsavel?: string | null
+          sigla?: string
+          status?: Database["public"]["Enums"]["entity_status"]
+          telefone?: string | null
+          updated_at?: string
+        }
+        Relationships: []
+      }
+      equipes: {
+        Row: {
+          codigo_esus: string | null
+          created_at: string
+          deleted_at: string | null
+          id: string
+          nome: string
+          qtd_acs: number
+          responsavel: string | null
+          status: Database["public"]["Enums"]["entity_status"]
+          tipo: string | null
+          unidade_id: string
+          updated_at: string
+        }
+        Insert: {
+          codigo_esus?: string | null
+          created_at?: string
+          deleted_at?: string | null
+          id?: string
+          nome: string
+          qtd_acs?: number
+          responsavel?: string | null
+          status?: Database["public"]["Enums"]["entity_status"]
+          tipo?: string | null
+          unidade_id: string
+          updated_at?: string
+        }
+        Update: {
+          codigo_esus?: string | null
+          created_at?: string
+          deleted_at?: string | null
+          id?: string
+          nome?: string
+          qtd_acs?: number
+          responsavel?: string | null
+          status?: Database["public"]["Enums"]["entity_status"]
+          tipo?: string | null
+          unidade_id?: string
+          updated_at?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "equipes_unidade_id_fkey"
+            columns: ["unidade_id"]
+            isOneToOne: false
+            referencedRelation: "unidades"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      logs_alteracoes: {
+        Row: {
+          acao: Database["public"]["Enums"]["log_acao"]
+          created_at: string
+          detalhes: Json | null
+          entidade: string
+          entidade_id: string | null
+          id: string
+          user_id: string | null
+          user_nome: string | null
+        }
+        Insert: {
+          acao: Database["public"]["Enums"]["log_acao"]
+          created_at?: string
+          detalhes?: Json | null
+          entidade: string
+          entidade_id?: string | null
+          id?: string
+          user_id?: string | null
+          user_nome?: string | null
+        }
+        Update: {
+          acao?: Database["public"]["Enums"]["log_acao"]
+          created_at?: string
+          detalhes?: Json | null
+          entidade?: string
+          entidade_id?: string | null
+          id?: string
+          user_id?: string | null
+          user_nome?: string | null
+        }
+        Relationships: []
+      }
+      profiles: {
+        Row: {
+          created_at: string
+          distrito_id: string | null
+          email: string
+          id: string
+          nome: string
+          status: Database["public"]["Enums"]["entity_status"]
+          telefone: string | null
+          ultimo_acesso: string | null
+          updated_at: string
+        }
+        Insert: {
+          created_at?: string
+          distrito_id?: string | null
+          email: string
+          id: string
+          nome: string
+          status?: Database["public"]["Enums"]["entity_status"]
+          telefone?: string | null
+          ultimo_acesso?: string | null
+          updated_at?: string
+        }
+        Update: {
+          created_at?: string
+          distrito_id?: string | null
+          email?: string
+          id?: string
+          nome?: string
+          status?: Database["public"]["Enums"]["entity_status"]
+          telefone?: string | null
+          ultimo_acesso?: string | null
+          updated_at?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "profiles_distrito_id_fkey"
+            columns: ["distrito_id"]
+            isOneToOne: false
+            referencedRelation: "distritos"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      unidades: {
+        Row: {
+          bairro: string | null
+          cnes: string | null
+          coordenador: string | null
+          cor: string
+          created_at: string
+          deleted_at: string | null
+          distrito_id: string
+          email: string | null
+          endereco: string | null
+          foto_url: string | null
+          id: string
+          latitude: number | null
+          longitude: number | null
+          nome: string
+          status: Database["public"]["Enums"]["entity_status"]
+          telefone: string | null
+          tipo: Database["public"]["Enums"]["unidade_tipo"]
+          updated_at: string
+        }
+        Insert: {
+          bairro?: string | null
+          cnes?: string | null
+          coordenador?: string | null
+          cor?: string
+          created_at?: string
+          deleted_at?: string | null
+          distrito_id: string
+          email?: string | null
+          endereco?: string | null
+          foto_url?: string | null
+          id?: string
+          latitude?: number | null
+          longitude?: number | null
+          nome: string
+          status?: Database["public"]["Enums"]["entity_status"]
+          telefone?: string | null
+          tipo?: Database["public"]["Enums"]["unidade_tipo"]
+          updated_at?: string
+        }
+        Update: {
+          bairro?: string | null
+          cnes?: string | null
+          coordenador?: string | null
+          cor?: string
+          created_at?: string
+          deleted_at?: string | null
+          distrito_id?: string
+          email?: string | null
+          endereco?: string | null
+          foto_url?: string | null
+          id?: string
+          latitude?: number | null
+          longitude?: number | null
+          nome?: string
+          status?: Database["public"]["Enums"]["entity_status"]
+          telefone?: string | null
+          tipo?: Database["public"]["Enums"]["unidade_tipo"]
+          updated_at?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "unidades_distrito_id_fkey"
+            columns: ["distrito_id"]
+            isOneToOne: false
+            referencedRelation: "distritos"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      user_roles: {
+        Row: {
+          created_at: string
+          id: string
+          role: Database["public"]["Enums"]["app_role"]
+          user_id: string
+        }
+        Insert: {
+          created_at?: string
+          id?: string
+          role: Database["public"]["Enums"]["app_role"]
+          user_id: string
+        }
+        Update: {
+          created_at?: string
+          id?: string
+          role?: Database["public"]["Enums"]["app_role"]
+          user_id?: string
+        }
+        Relationships: []
+      }
     }
     Views: {
       [_ in never]: never
     }
     Functions: {
-      [_ in never]: never
+      has_any_role: {
+        Args: {
+          _roles: Database["public"]["Enums"]["app_role"][]
+          _user_id: string
+        }
+        Returns: boolean
+      }
+      has_role: {
+        Args: {
+          _role: Database["public"]["Enums"]["app_role"]
+          _user_id: string
+        }
+        Returns: boolean
+      }
+      user_distrito_id: { Args: { _user_id: string }; Returns: string }
     }
     Enums: {
-      [_ in never]: never
+      app_role: "admin_geral" | "gestor_distrital" | "tecnico" | "visualizador"
+      entity_status: "ativo" | "inativo"
+      log_acao: "criar" | "editar" | "excluir"
+      unidade_tipo: "UBS" | "USF" | "UPA" | "CAPS" | "Outros"
     }
     CompositeTypes: {
       [_ in never]: never
@@ -150,6 +506,11 @@ export type CompositeTypes<
 
 export const Constants = {
   public: {
-    Enums: {},
+    Enums: {
+      app_role: ["admin_geral", "gestor_distrital", "tecnico", "visualizador"],
+      entity_status: ["ativo", "inativo"],
+      log_acao: ["criar", "editar", "excluir"],
+      unidade_tipo: ["UBS", "USF", "UPA", "CAPS", "Outros"],
+    },
   },
 } as const
