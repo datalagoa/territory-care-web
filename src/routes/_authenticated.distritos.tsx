@@ -303,7 +303,7 @@ function DistritoDialog({
   onSubmit,
 }: {
   editing: Distrito | null;
-  onSubmit: (e: React.FormEvent<HTMLFormElement>) => void | Promise<void>;
+  onSubmit: (e: React.FormEvent<HTMLFormElement>) => unknown;
 }) {
   return (
     <DialogContent className="max-w-lg">

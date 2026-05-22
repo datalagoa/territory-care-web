@@ -394,7 +394,7 @@ function UnidadeDialog({
 }: {
   editing: Unidade | null;
   distritos: Distrito[];
-  onSubmit: (e: React.FormEvent<HTMLFormElement>) => void;
+  onSubmit: (e: React.FormEvent<HTMLFormElement>) => unknown;
 }) {
   return (
     <DialogContent className="max-w-2xl">

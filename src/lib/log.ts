@@ -19,6 +19,6 @@ export async function recordLog(params: {
     acao: params.acao,
     entidade: params.entidade,
     entidade_id: params.entidade_id ?? null,
-    detalhes: params.detalhes ?? null,
+    detalhes: (params.detalhes ?? null) as never,
   });
 }
